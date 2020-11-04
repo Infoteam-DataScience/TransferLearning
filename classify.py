@@ -97,7 +97,9 @@ def init():
     model = Sequential()
 
     # dense classification layer
-    model.add(Dense(512, activation='relu', input_shape=xT.shape[1:]))
+    model.add(GlobalAveragePooling2D(input_shape=xT.shape[1:]))
+
+    model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.250)) # regularization
 
     model.add(Dense(256, activation='relu'))
