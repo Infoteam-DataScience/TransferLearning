@@ -46,15 +46,23 @@ def data():
 
         # load the dog data set
         files = load_files(filename)
-
-        x = numpy.array(files['filenames'])    
+        
+        # define target vectors
         y = np_utils.to_categorical(numpy.array(files['target']), 133)
 
-        return x, y
+        return y
 
     # training and validation data-sets
-    xT, yT = dataset('./dataset/train')
-    xV, yV = dataset('./dataset/valid')
+    yT = dataset('./dataset/train')
+    yV = dataset('./dataset/valid')
+
+    # receives all pre-trained features 
+    trained = 'transfer/network.npz'
+    feature = numpy.load(trained)
+
+    # training and validation data-sets
+    xT = feature['train']
+    xV = feature['valid']
 
     return xT, yT, xV, yV
 
