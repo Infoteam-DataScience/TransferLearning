@@ -114,8 +114,7 @@ def init():
         checkpoints = ModelCheckpoint(filepath=weights, verbose=1, 
                                       save_best_only=True)
 
-        model.fit(train_Resnet50, train_targets, verbose=1,
-                  validation_data=(valid_Resnet50, valid_targets),
+        model.fit(xT, yT, verbose=1, validation_data=(xV, yV),
                   epochs=20, batch_size=20, callbacks=[checkpoints])
 
     # loading the model weights
