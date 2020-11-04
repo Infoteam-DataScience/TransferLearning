@@ -153,7 +153,7 @@ def eval(model, image):
     features = pretrained(image)
 
     # evaluate prediction and convert to breed
-    prediction = dogs[np.argmax(model.predict(features))]
+    prediction = dogs[numpy.argmax(model.predict(features))]
 
     print('Dog breed: ' + str(prediction))
 
