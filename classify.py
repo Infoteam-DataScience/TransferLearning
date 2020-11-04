@@ -48,7 +48,7 @@ def data():
         files = load_files(filename)
 
         x = numpy.array(files['filenames'])    
-        y = np_utils.to_categorical(numpy.array(data['target']), 133)
+        y = np_utils.to_categorical(numpy.array(files['target']), 133)
 
         return x, y
 
