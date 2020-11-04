@@ -128,6 +128,7 @@ def eval(model, image):
     Predicting dog breed on handed in image
     '''
 
+    # receiving all available dog breed' names
     dogs = name()
 
     def pretrained(tensor):
@@ -151,15 +152,13 @@ def main(args):
 
     image = load(args[0])
 
-    if image is None:       
-
-        return # exits cmd line
+    if image is None:   
+        return 
 
     model = init()
 
     if model is None:
-
-        return # exits cmd line
+        return 
 
     # predict the dog breed
     eval(model, image)
