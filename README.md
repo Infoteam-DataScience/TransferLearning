@@ -24,7 +24,11 @@ This project covers state of the art __deep learning__ neural networks for image
 With the use of dog breed classification by neural networks the idea of convolutional networks and transfer learning are presented within this repository. Since there are a lot different dog breeds this is a challenging task with great insights of artificial intelligence applications.
 
 ### 1.2. Files and Folders
-classify.py
+- `Files`:  
+    The main method is provided in the classify.py python file.
+
+- `Folders`:  
+    There is a transfer folder contained the pre-trained network.
 
 ## 2. Requirements
 Since the project uses `Keras` with `TensorFlow` as backend it is strongly recommended to use __Nvidia GPUs__. All of the provided neural networks are highly computational intensive and would therefore run a long time on the CPU.
