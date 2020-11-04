@@ -1,8 +1,8 @@
 import sys
-import glob
 import numpy
 
 from os                          import path
+from glob                        import glob
 from sklearn.datasets            import load_files       
 from keras.utils                 import np_utils
 from keras.layers                import Conv2D, MaxPooling2D, GlobalAveragePooling2D
