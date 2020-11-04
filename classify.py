@@ -39,10 +39,7 @@ def data():
     def dataset(filename):
 
         # checks if file exists
-        if not path.exists(filename):
-
-            # show error message
-            print('Missing data-set for training!')   
+        if not path.exists(filename):             
 
             return None, None          
 
@@ -102,6 +99,9 @@ def init():
 
         # checking if data exists
         if xT is None or yT is None:
+
+            # show error message
+            print('Missing data-sets for training!')  
 
             return None 
 
