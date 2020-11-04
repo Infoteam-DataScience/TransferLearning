@@ -71,6 +71,17 @@ def init():
     Initialize step of the pre-trained network
     '''
 
+    # training and validation
+    xT, yT, xV, yV = data()
+
+    # checking if data exists
+    if xT is None or yT is None:
+
+        # show error message
+        print('Missing data-sets for training!')  
+
+        return None 
+
     # define filenames for loading
     network = './transfer/network.npz'
     weights = './transfer/weights.hdf5'
@@ -78,7 +89,7 @@ def init():
     model = Sequential()
 
     # dense classification layer
-    model.add(Dense(512, activation='relu'))
+    model.add(Dense(512, activation='relu', input_shape=xT.shape[1:]))
     model.add(Dropout(0.250)) # regularization
 
     model.add(Dense(256, activation='relu'))
@@ -94,17 +105,6 @@ def init():
     else:
 
         print('Start Transfer Learning...')
-
-        # training and validation
-        xT, yT, xV, yV = data()
-
-        # checking if data exists
-        if xT is None or yT is None:
-
-            # show error message
-            print('Missing data-sets for training!')  
-
-            return None 
 
         # optimization parameters 
         model.compile(optimizer='rmsprop', 
