@@ -33,11 +33,18 @@ With the use of dog breed classification by neural networks the idea of convolut
 ## 2. Requirements
 Since the project uses `Keras` with `TensorFlow` as backend it is strongly recommended to use __Nvidia GPUs__. All of the provided neural networks are highly computational intensive and would therefore run a long time on the CPU.
 
+>__Remark__  
+There is also a requirements.txt file provided in the repository with all the necessary packages.
+
 ## 3. Console Apps
+
 The usage of the console application is quite simple by providing an image filepath as the only argument.
 ```
 python classify.py <image-filename>
 ```
+In the initial run of the classification there is no trained network provided yet. In order to pre-train a network please download the dog breed dataset from this [Link](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip) and move the content to the folder `./dataset/`.
+
+Once there is a trained network the command above will simply evaluate the network and no longer train it.
 
 >__Remark__  
 This can also be done for human images - so feel free to discover if you look like a specific dog breed.
