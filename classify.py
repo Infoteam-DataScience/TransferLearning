@@ -9,6 +9,7 @@ from keras.layers                import Conv2D, MaxPooling2D, GlobalAveragePooli
 from keras.layers                import Dropout, Flatten, Dense
 from keras.models                import Sequential
 from keras.callbacks             import ModelCheckpoint  
+from keras.preprocessing         import image  
 from keras.applications.resnet50 import ResNet50, preprocess_input
 
 
@@ -86,7 +87,7 @@ def init():
     model.add(Dense(133, activation='softmax'))
     
     # checks pre-trained weights
-    if not path.exists(weights)
+    if path.exists(weights):
 
         print('Apply Transfer Learning...')
 
@@ -136,7 +137,7 @@ def eval(model, image):
         '''    
         network = ResNet50(weights='imagenet', include_top=False)
 
-	    return network.predict(preprocess_input(tensor))
+        return network.predict(preprocess_input(tensor))
 
     # receive features from pretrained network
     features = pretrained(image)
