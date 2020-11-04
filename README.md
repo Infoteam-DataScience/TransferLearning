@@ -38,20 +38,18 @@ python classify.py <image-filename>
 >__Remark__  
 This can also be done for human images - so feel free to discover if you look like a specific dog breed.
 
----
-
 ## 4. Convolutional Neural Networks
 A state of the art approach of image classification is using convolutional neural networks. The architecture of those networks and the idea behind the different kinds of layers will be described below.
 
 ### 4.1. Architecture
-![](cnn-architecture.png)
+![](images/cnn-architecture.png)
 
 ### 4.2. Functionality 
 Each of the presented layers of the convolutional network has its own task to handle. On the left side there is simply the input layer, which contains the data in specific tensor layout.
 
 The main part of the network can be found in the middle of the figure. As the name allready suggests there are several convolutional layers, which lead to the final features layers.
 
-![](convolution-layer.png)
+![](images/convolution-layer.png)
 
 As seen above in the formula of a convolutional layer, depending on the weights w of the layer this can act like an edge filter, smoothing filter or shape filter and by that find features.
 
@@ -66,7 +64,7 @@ As allready mentioned the classification accuray depends strongly on the ability
 
 There are allready trained networks on KERAS like ResNet-50, Inception or VGG-19 which are optimized on an enormously large data set, the so called ImageNet with many different classes.
 
-![](transfer-learning.png)
+![](images/transfer-learning.png)
 
 Using the first layers and their weights of such pre-trained networks for feature generation is called transfer learning and is a very helpful tool for challenging image classification tasks.
 
