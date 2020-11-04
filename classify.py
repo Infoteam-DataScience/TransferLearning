@@ -1,0 +1,148 @@
+import sys
+import glob
+import numpy
+
+from os                          import path
+from sklearn.datasets            import load_files       
+from keras.utils                 import np_utils
+from keras.layers                import Conv2D, MaxPooling2D, GlobalAveragePooling2D
+from keras.layers                import Dropout, Flatten, Dense
+from keras.models                import Sequential
+from keras.callbacks             import ModelCheckpoint  
+from keras.applications.resnet50 import ResNet50, preprocess_input
+
+
+def load(filename):
+    '''
+    Loading the image from filename to tensor.
+    '''
+
+    # checks if the file-name exists
+    if not path.exists(filename):        
+
+        return None
+
+    # load image and also resizes it
+    picture = image.load_img(filename, target_size=(224, 224))    
+
+    # 4D tensor dim (1, 224, 224, 3)    
+    return numpy.expand_dims(image.img_to_array(picture), axis=0)
+
+def data():
+    '''
+    Loading the dog breed data set (splittet)
+    '''
+
+    def dataset(path):
+
+        # load the dog data set
+        files = load_files(path)
+
+        x = numpy.array(files['filenames'])    
+        y = np_utils.to_categorical(numpy.array(data['target']), 133)
+
+        return x, y
+
+    # training and validation data-sets
+    xT, yT = dataset('./dataset/train')
+    xV, yV = dataset('./dataset/valid')
+
+    return xT, yT, xV, yV
+
+def name():
+    '''
+    Returns the names of all dog breed as list
+    '''
+    pattern = 'dataset/train/*/'
+
+    return [item[20:-1] for item in sorted(glob(pattern))]
+
+def init():
+    '''
+    Initialize step of the pre-trained network
+    '''
+
+    # define filenames for loading
+    network = './transfer/network.npz'
+    weights = './transfer/weights.hdf5'
+
+    model = Sequential()
+
+    # dense classification layer
+    model.add(Dense(512, activation='relu'))
+    model.add(Dropout(0.250)) # regularization
+
+    model.add(Dense(256, activation='relu'))
+    model.add(Dropout(0.125)) # regularization
+
+    model.add(Dense(133, activation='softmax'))
+    
+    # checks pre-trained weights
+    if not path.exists(weights)
+
+        print('Apply Transfer Learning...')
+
+    else:
+
+        print('Start Transfer Learning...')
+        
+        # optimization parameters 
+        model.compile(optimizer='rmsprop', 
+                      loss='categorical_crossentropy', 
+                      metrics=['accuracy'])
+
+        # model checkpoints
+        checkpoints = ModelCheckpoint(filepath=weights, verbose=1, 
+                                      save_best_only=True)
+
+        model.fit(train_Resnet50, train_targets, verbose=1,
+                  validation_data=(valid_Resnet50, valid_targets),
+                  epochs=20, batch_size=20, callbacks=[checkpoints])
+
+    # loading the model weights
+    model.load_weights(weights)
+
+    return model
+
+def eval(model, image):
+    '''
+    Predicting dog breed on handed in image
+    '''
+
+    dogs = name()
+
+    def pretrained(tensor):
+        '''
+        Extract features prom pre-trained network
+        '''    
+        network = ResNet50(weights='imagenet', include_top=False)
+
+	    return network.predict(preprocess_input(tensor))
+
+    # receive features from pretrained network
+    features = pretrained(image)
+
+    # evaluate prediction and convert to breed
+    prediction = dogs[np.argmax(model.predict(features))]
+
+    print('Dog breed: ' + str(prediction))
+
+
+def main(args):
+
+    image = load(args[0])
+
+    if image is None:
+
+        # display error message
+        print('Could not find file!')
+
+        return # exits cmd line
+
+    model = init()
+
+    # predict the dog breed
+    eval(model, image)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
