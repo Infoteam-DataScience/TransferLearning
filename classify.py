@@ -18,7 +18,10 @@ def load(filename):
     '''
 
     # checks if the file-name exists
-    if not path.exists(filename):        
+    if not path.exists(filename):     
+
+        # display error message
+        print('Could not find file!')   
 
         return None
 
@@ -33,10 +36,18 @@ def data():
     Loading the dog breed data set (splittet)
     '''
 
-    def dataset(path):
+    def dataset(filename):
+
+        # checks if file exists
+        if not path.exists(filename):
+
+            # show error message
+            print('Missing data-set for training!')   
+
+            return None, None          
 
         # load the dog data set
-        files = load_files(path)
+        files = load_files(filename)
 
         x = numpy.array(files['filenames'])    
         y = np_utils.to_categorical(numpy.array(data['target']), 133)
@@ -85,7 +96,15 @@ def init():
     else:
 
         print('Start Transfer Learning...')
-        
+
+        # training and validation
+        xT, yT, xV, yV = data()
+
+        # checking if data exists
+        if xT is None or yT is None:
+
+            return None 
+
         # optimization parameters 
         model.compile(optimizer='rmsprop', 
                       loss='categorical_crossentropy', 
@@ -132,14 +151,15 @@ def main(args):
 
     image = load(args[0])
 
-    if image is None:
-
-        # display error message
-        print('Could not find file!')
+    if image is None:       
 
         return # exits cmd line
 
     model = init()
+
+    if model is None:
+
+        return # exits cmd line
 
     # predict the dog breed
     eval(model, image)
