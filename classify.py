@@ -126,7 +126,7 @@ def init():
                                       save_best_only=True)
 
         model.fit(xT, yT, verbose=1, validation_data=(xV, yV),
-                  epochs=20, batch_size=20, callbacks=[checkpoints])
+                  epochs=10, batch_size=20, callbacks=[checkpoints])
 
     # loading the model weights
     model.load_weights(weights)

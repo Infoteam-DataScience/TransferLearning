@@ -14,7 +14,9 @@ This project covers state of the art __deep learning__ neural networks for image
     4.1. Architecture  
     4.2. Functionality  
     4.3. Challenges
-5. Transfer Learning - Application
+5. Transfer Learning - Application  
+    5.1. Parameter  
+    5.2. Metrices
 
 ---
 
@@ -80,6 +82,24 @@ There are allready trained networks on KERAS like ResNet-50, Inception or VGG-19
 Using the first layers and their weights of such pre-trained networks for feature generation is called transfer learning and is a very helpful tool for challenging image classification tasks.
 
 As seend above the weights of those layers are freezed. Appending those frozen parts with dense layers makes it much easier to classifiy images, since the features are allready well generated.
+
+### 5.1. Parameter
+Since the first layers of the network are already defined by the ResNet architecture, there are only dense layers to be added for classification. The last layer contains of 133 nodes, which corresponds to the total number of dog breeds.
+
+>__Remark__  
+As an additional regularization step there are also some dropout layers included to the network.
+
+
+### Model Summary  
+![](./images/summary.png)
+
+### 5.2. Metrices
+In the last section, let's have a look on the __accuracy__ of the pre-trained  network. After a training phase of 10 epochs the neural networks predicts __82.2%__ of the unknown validation set right.
+
+>__Remark__  
+During the training the loss function is described by the categorical crossentropy, which is defined by  
+__loss = - sum( yP[i] log(y[T]) )__,
+where yP is the predicted result and y the reference.
 
 # Acknowledgement
 I would like to thank Udacity for providing such a great idea and content for this data science project.
