@@ -59,7 +59,7 @@ Since this migh be a challenging task due to small data sets or large hyper para
 
 By that the first layers of the network are already defined with the ResNet architecture, there are only dense layers to be added for classification in the context. 
 
-The last dense layer of the neural network contains of 133 nodes for the doog breed classification task, which corresponds to the total number of dog breeds.
+The last dense layer of the neural network contains of 133 nodes for the dog breed classification task, which corresponds to the total number of dog breeds.
 
 ![](./images/summary.png)
 
@@ -70,9 +70,9 @@ As an additional regularization step there are also some dropout layers included
 In the last section, let's have a look on the __accuracy__ of the pre-trained  network. After a training phase of 10 epochs the neural networks predicts __82.2%__ of the unknown validation set right.
 
 >__Remark__  
-During the training the loss function is described by the categorical crossentropy, which is defined by  
-__loss = - sum( yP[i] log(y[T]) )__,
-where yP is the predicted result and y the reference.
+During the training the loss function is described by the categorical crossentropy, as seen below where y<sub>P</sub> is the predicted result, y<sub>R</sub> the reference and N the total number of predictions.
+
+![](images/loss-function.png)
 
 # Acknowledgement
 I would like to thank Udacity for providing such a great idea and content for this data science project.
