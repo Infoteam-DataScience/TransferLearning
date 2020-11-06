@@ -53,7 +53,7 @@ This can also be done for human images - so feel free to discover if you look li
 
 ### 2.2. Parameters
 
-As described in more details on my [blog post](TODO) the classification accuray depends strongly on the ability of finding all characteristic features in an image. 
+As described in more details on my [blog post](https://philipp-killermann.medium.com/transfer-learning-6537a705bdaf) the classification accuray depends strongly on the ability of finding all characteristic features in an image. 
 
 Since this migh be a challenging task due to small data sets or large hyper parameters search spaces, there is a method called transfer learning which fills the gap.
 
