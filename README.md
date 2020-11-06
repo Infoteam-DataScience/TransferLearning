@@ -26,10 +26,10 @@ With the use of dog breed classification by neural networks the idea of convolut
     The main method is provided in the classify.py python file.
 
 - `Folders`:  
-    There is a _transfer_ folder contained the transfered network.
+    There is a _transfer_ folder contained the transferred network.
 
 ### 1.2. All Requirements
-Since the project uses `Keras` with `TensorFlow` as backend it is strongly recommended to use __Nvidia GPUs__. All of the provided neural networks are highly computational intensive and would therefore run a long time on the CPU.
+Since the project uses `Keras` with `TensorFlow` as backend it is strongly recommended to use __Nvidia GPUs__. All of the provided neural networks are highly computationally intensive and would therefore run a long time on the CPU.
 
 >__Remark__  
 There is also a requirement.txt file provided in the repository with all the necessary packages.
@@ -38,7 +38,7 @@ There is also a requirement.txt file provided in the repository with all the nec
 
 ### 2.1. Application
 
-The usage of the console application is quite simple by providing an image filepath as the only argument.
+The usage of the console application is quite simple by providing an image file path as the only argument.
 ```
 python classify.py <image-filename>
 ```
@@ -51,9 +51,9 @@ This can also be done for human images - so feel free to discover if you look li
 
 ### 2.2. Parameters
 
-As described in more details on my [blog post](https://philipp-killermann.medium.com/transfer-learning-6537a705bdaf) the classification accuray depends strongly on the ability of finding all characteristic features in an image. 
+As described in more details on my [blog post](https://philipp-killermann.medium.com/transfer-learning-6537a705bdaf) the classification accuracy depends strongly on the ability of finding all characteristic features in an image. 
 
-Since this migh be a challenging task due to small data sets or large hyper parameters search spaces, there is a method called transfer learning which fills the gap.
+Since this might be a challenging task due to small data sets or large hyper parameters search spaces, there is a method called transfer learning which fills the gap.
 
 ![](./images/transfer-learning.png)
 
@@ -67,10 +67,10 @@ The last dense layer of the neural network contains of 133 nodes for the dog bre
 As an additional regularization step there are also some dropout layers included to the network too.
 
 ### 2.3. Metrices
-In the last section, let's have a look on the __accuracy__ of the pre-trained  network. After a training phase of 10 epochs the neural networks predicts __82.2%__ of the unknown validation set right.
+In the last section, let's have a look on the __accuracy__ of the pre-trained  network. After a training phase of 10 epochs the neural network predicts __82.2%__ of the unknown validation set right.
 
 >__Remark__  
-During the training the loss function is described by the categorical crossentropy, as seen below where y<sub>P</sub> is the predicted result, y<sub>R</sub> the reference and N the total number of predictions.
+During the training the loss function is described by the categorical cross entropy, as seen below where y<sub>P</sub> is the predicted result, y<sub>R</sub> the reference and N the total number of predictions.
 
 ![](images/loss-function.png)
 
