@@ -55,6 +55,8 @@ As described in more details on my [blog post](https://philipp-killermann.medium
 
 Since this migh be a challenging task due to small data sets or large hyper parameters search spaces, there is a method called transfer learning which fills the gap.
 
+![](./images/transfer-learning.png)
+
 By that the first layers of the network are already defined with the ResNet architecture, there are only dense layers to be added for classification in the context. 
 
 The last dense layer of the neural network contains of 133 nodes for the dog breed classification task, which corresponds to the total number of dog breeds.
