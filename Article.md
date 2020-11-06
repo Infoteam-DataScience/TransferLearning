@@ -37,4 +37,5 @@ Using the first layers and their __weights__ of such pre-trained networks for fe
 As seen above the weights of those layers are freezed. Appending those frozen parts with dense layers makes it much easier to classifiy images, since the features are allready well generated.
 
 ### GitHub Repository
+If you interested how to implement __transfer learning__ with Keras and Tensorflow in Python have a look on  my [Repository]() on GitHub - there you can find a project on how to classify doog breeds.
 
