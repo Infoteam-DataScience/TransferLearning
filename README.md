@@ -46,8 +46,6 @@ In the initial run of the classification there no trained weights provided yet. 
 
 Once the training phase is finished there is a trained network provided in the file system and the command above will simply evaluate the network and no longer train it again.
 
-![](./images/Title.png)
-
 >__Remark__  
 This can also be done for human images - so feel free to discover if you look like a specific dog breed.
 
@@ -60,6 +58,8 @@ Since this migh be a challenging task due to small data sets or large hyper para
 By that the first layers of the network are already defined with the ResNet architecture, there are only dense layers to be added for classification in the context. 
 
 The last dense layer of the neural network contains of 133 nodes for the dog breed classification task, which corresponds to the total number of dog breeds.
+
+![](./images/summary.png)
 
 >__Remark__  
 As an additional regularization step there are also some dropout layers included to the network too.
