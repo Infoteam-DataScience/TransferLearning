@@ -28,7 +28,7 @@ In the last fully connected dense layers the classification itself takes place. 
 Since for the classification it's essential to find all relevant features in the image, but as there might be only small data set provided to train this gets a hard task and leads to the next section about transfer learning.
 
 ## Transfer Learning
-As already mentioned the classification accuracy depends strongly on the ability of finding all characteristic features in an image. But thankfully there is method called transfer learning which fills the gap.
+As already mentioned the classification accuracy depends strongly on the ability of finding all characteristic features in an image. But thankfully there is a method called transfer learning which fills the gap.
 
 There are already trained networks on KERAS like ResNet-50, Inception or VGG-19 which are optimized on an enormously large data set, the so called ImageNet with many different classes.
 
@@ -39,5 +39,5 @@ Using the first layers and their __weights__ of such pre-trained networks for fe
 As seen above the weights of those layers are frozen. Appending those frozen parts with dense layers makes it much easier to classify images, since the features are already well generated.
 
 ### GitHub Repository
-If you interested how to implement __transfer learning__ with Keras and TensorFlow in Python have a look on  my [Repository](https://github.com/Infoteam-DataScience/TransferLearning) on GitHub - there you can find a project on how to classify dog breeds.
+If you are interested how to implement __transfer learning__ with Keras and TensorFlow in Python have a look on  my [Repository](https://github.com/Infoteam-DataScience/TransferLearning) on GitHub - there you can find a project on how to classify dog breeds.
 
