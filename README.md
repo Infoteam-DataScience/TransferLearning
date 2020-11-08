@@ -50,13 +50,18 @@ There is also a __requirement.txt__ file provided in the repository with all the
 With the use of dog breed classification by neural networks the idea of convolutional networks and transfer learning are presented within this repository. Since there are a lot different dog breeds this is a challenging task with great insights of artificial intelligence applications.
 
 ### 2.2. Deeper Insights
-The data base contains about __XYZ__ dog images and their dog breeds - in total there are __133__ different dog breeds provided. The task for the neural network is to classify the dog breed receiving only a dog image. 
+The data base contains about __8351__ dog images and their dog breeds - in total there are __133__ different dog breeds provided. The task for the neural network is to classify the dog breed receiving only a dog image. 
 
 >__Remark__  
 The provided data set in the [link](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip) is already splitted into a training, testing and validation set folder. 
 
 #### Distribution
 In order to receive a better understanding of the classification task, let's have a look on the data distribution. As you can see in the figure below there are some dog breeds with just a few images provided for them.
+
+![](images/histrogram.png)
+
+>__Remark__  
+This histogram shows a __non homogeneous__ data set _distribution_ - some classes only have 30 images.
 
 #### Challanges 
 But not only the data distribution, the __classification task__ itself will be a hard challenge as well. If we have a closer look into the data set there a same breeds with different colors or even some breed mixes contained.
@@ -143,7 +148,7 @@ The last dense layer of the neural network contains of 133 nodes for the dog bre
 ### 5.1. Metric Evaluation  
 In the last section, let's have a look on the different kinds of __metrices__ used during the classification task as seen in the screenshow below and describe them shortly.
 
-TODO
+![](images/metrices.png)
 
 #### Accuracy
 In general the _accuracy_ is defined as the proportion of the as true predicted results (sum of true positive and true negative) among the number of all predicted results.
@@ -161,14 +166,19 @@ The loss function is described by the _categorical cross entropy_, as seen below
 >__Remark__  
 The _log_ loss term of the forumla above takes into account the uncertainty of a prediction based on how much it varies from the actual reference label value.
 
-After a training phase of 10 epochs the pre-trained network predicts __82.2%__ of the unknown validation set right, whereas the naive approach only predicts __XY.Z%__ correct.
+After a training phase of 10 epochs the pre-trained network predicts __80.1%__ of the unknown validation set right, whereas the naive approach only predicts __2,1%__ correct.
 
 |                   | Accuracy      |
-| ----------------- |---------------|
-| Naive Approach    | XY.Z%         | 
-| Transfer Learning | 82.2%         | 
+| ----------------- |--------------:|
+| Naive Approach    |  2,1 %        | 
+| Transfer Learning | 80.1 %        | 
 
 ### 5.2. Confusion Matrix
+![](images/confusion-matrix.png)
+
+
+>__Remark__  
+Each row/colum represents a dog breed (miss-) classification accuracy. As you can see some of the values are beside the diagonal, which indicate that those dog breeds are still hard to predict correct.
 
 ## 6. Short Conclusion
 The transfer learning technique surpasses the naive approach by far! This is a great and easy way to improve the accuracy of the dog breed image classification neural network.

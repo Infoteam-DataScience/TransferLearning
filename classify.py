@@ -56,6 +56,19 @@ def data():
     yT = dataset('./dataset/train')
     yV = dataset('./dataset/valid')
 
+    # simple histogram evaluation (cnt)
+    histogram = sorted([sum(yT[:,i]) for i in range(133)], reverse=True)
+
+    file = open('./histrogram.csv', 'w')
+    
+    # writing the csv header line first
+    file.write('index, count\n') 
+
+    for i in range(133):
+        file.write(str(i+1) + ', ' + str(histogram[i]) + '\n')
+
+    file.close() # close file afterward
+
     # receives all pre-trained features 
     trained = 'transfer/network.npz'
     feature = numpy.load(trained)
@@ -73,6 +86,42 @@ def name():
     pattern = 'dataset/train/*/'
 
     return [item[20:-1] for item in sorted(glob(pattern))]
+
+def naiv():
+    '''
+    Naive version of convolutional neural network
+    '''
+
+    # creating a new model
+    model = Sequential()
+
+    # 1. convolution layer
+    model.add(Conv2D(64, (2, 2), activation='relu'), input_shape=(224, 224, 3))
+    model.add(MaxPooling2D((2, 2)))
+
+    # 2. convolution layer
+    model.add(Conv2D(32, (2, 2), activation='relu'))
+    model.add(MaxPooling2D((2, 2)))
+
+    # 3. convolution layer
+    model.add(Conv2D(16, (2, 2), activation='relu'))
+    model.add(MaxPooling2D((2, 2)))
+
+    # global averaged pool
+    model.add(GlobalAveragePooling2D())
+
+    # 1. dense full layers
+    model.add(Dense(512, activation='relu'))
+    model.add(Dropout(0.250)) 
+
+    # 2. dense full layers
+    model.add(Dense(256, activation='relu'))
+    model.add(Dropout(0.125)) 
+
+    # classification nodes
+    model.add(Dense(133, activation='softmax'))
+
+    return model
 
 def init():
     '''
@@ -106,6 +155,8 @@ def init():
     model.add(Dropout(0.125)) # regularization
 
     model.add(Dense(133, activation='softmax'))
+
+    # model = naiv() # for comparison purposes
     
     # checks pre-trained weights
     if path.exists(weights):
