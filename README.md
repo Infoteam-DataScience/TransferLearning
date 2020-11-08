@@ -25,7 +25,9 @@ This project is covering __transfer learning__ for neural networks in the contex
     5.1. Metric Evaluation  
     5.2. Confusion Matrix
 
-5. Short Conclusion
+6. Conclusion  
+
+7. Discussion
 
 ---
 
@@ -180,15 +182,24 @@ After a training phase of 10 epochs the pre-trained network predicts __80.1%__ o
 >__Remark__  
 Each row/colum represents a dog breed (miss-) classification accuracy. As you can see some of the values are beside the diagonal, which indicate that those dog breeds are still hard to predict correct.
 
-## 6. Short Conclusion
+## 6. Conclusion
 The transfer learning technique surpasses the naive approach by far! This is a great and easy way to improve the accuracy of the dog breed image classification neural network.
 
+As already mentioned the classification accuracy depends strongly on the ability of finding all characteristic features in an image. But thankfully there is a method called transfer learning which fills the gap.
+
+## 7. Discussion
 Although the accuracy of this network is already quite high, one issue is still the performance of some classes due to the inbalanced data set as seen in the sections above.
 
 >__Remark__  
 This can only be tackled by a more __balanced__ training set or further techniques like _class weighting_.
 
-Nevertheless - as a short outlook - the last part of the pre-trained network can still be improved by different kinds of __architectures__ or a __hyper parameter__ search for better configurations.
+Nevertheless - as a short outlook - the last part of the pre-trained network can still be improved by different kinds of __architectures__ or a __hyper parameter__ search for better configurations. Some ideas might be:
+
+- `Hyper Parameter`  
+There are still some _hyper parameters_ to be optimized, like the __size__ of the dense layers or the __type__ of activation function to be used by apporoaches like _grid search_.
+
+- `Class Weights`  
+Since the data set is _unbalanced_, classes with less data to be trained should receive __higher weights__ on the internal update steps by corresponding used class weights.
 
 # Acknowledgement
 I would like to thank Udacity for providing such a great idea and content for this data science project.
